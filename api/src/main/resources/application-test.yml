@@ -1,0 +1,17 @@
+spring:
+    profiles: test
+    # 数据源配置
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/fast?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+        username: root
+        password: 123456
+
+#自定义配置属性
+#源码生成文件夹
+#本地路径
+#source-code-dic: home/mysiteforme/mysite
+#source-code-zipfile: home/mysiteforme/源码.rar
+
+#搜索文件生成包的位置
+#本地路径
+#lucence-dic: home/mysiteforme/lucence
