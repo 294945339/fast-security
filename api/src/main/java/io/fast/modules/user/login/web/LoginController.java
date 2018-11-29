@@ -1,4 +1,4 @@
-package io.fast.modules.sys.login.web;
+package io.fast.modules.user.login.web;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

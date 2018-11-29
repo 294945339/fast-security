@@ -2,8 +2,8 @@ package io.fast.common.resolver;
 
 import io.fast.common.annotation.LoginUser;
 import io.fast.common.interceptor.AuthorizationInterceptor;
-import io.fast.modules.sys.domain.UserEntity;
-import io.fast.modules.sys.service.UserService;
+import io.fast.modules.user.domain.UserDomain;
+import io.fast.modules.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -26,7 +26,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().isAssignableFrom(UserEntity.class) && parameter.hasParameterAnnotation(LoginUser.class);
+        return parameter.getParameterType().isAssignableFrom(UserDomain.class) && parameter.hasParameterAnnotation(LoginUser.class);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         }
 
         //获取用户信息
-        UserEntity user = userService.selectById((Long)object);
+        UserDomain user = userService.selectById((Long)object);
 
         return user;
     }

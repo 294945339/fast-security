@@ -1,4 +1,4 @@
-package io.fast.modules.sys.domain;
+package io.fast.modules.user.domain;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -17,7 +17,7 @@ import java.util.Date;
  * @date 2017-03-23 15:22:06
  */
 @TableName("tb_user")
-public class UserEntity implements Serializable {
+public class UserDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**

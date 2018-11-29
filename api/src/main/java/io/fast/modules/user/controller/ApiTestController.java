@@ -1,10 +1,10 @@
-package io.fast.modules.sys.controller;
+package io.fast.modules.user.controller;
 
 
 import io.fast.common.annotation.Login;
 import io.fast.common.annotation.LoginUser;
 import io.fast.common.utils.R;
-import io.fast.modules.sys.domain.UserEntity;
+import io.fast.modules.user.domain.UserDomain;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +27,8 @@ public class ApiTestController {
 
     @Login
     @GetMapping("userInfo")
-    @ApiOperation(value="获取用户信息", response= UserEntity.class)
-    public R userInfo(@ApiIgnore @LoginUser UserEntity user){
+    @ApiOperation(value="获取用户信息", response= UserDomain.class)
+    public R userInfo(@ApiIgnore @LoginUser UserDomain user){
         return R.ok().put("user", user);
     }
 

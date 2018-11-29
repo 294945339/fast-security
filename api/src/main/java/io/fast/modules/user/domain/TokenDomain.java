@@ -14,7 +14,7 @@
  * the License.
  */
 
-package io.fast.modules.sys.domain;
+package io.fast.modules.user.domain;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -32,7 +32,7 @@ import java.util.Date;
  * @date 2017-03-23 15:22:07
  */
 @TableName("tb_token")
-public class TokenEntity implements Serializable {
+public class TokenDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**

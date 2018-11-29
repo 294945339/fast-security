@@ -1,10 +1,10 @@
-package io.fast.modules.sys.controller;
+package io.fast.modules.user.controller;
 
 import io.fast.common.utils.R;
 import io.fast.common.validator.ValidatorUtils;
-import io.fast.modules.sys.domain.UserEntity;
-import io.fast.modules.sys.form.RegisterForm;
-import io.fast.modules.sys.service.UserService;
+import io.fast.modules.user.domain.UserDomain;
+import io.fast.modules.user.form.RegisterForm;
+import io.fast.modules.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -35,7 +35,7 @@ public class ApiRegisterController {
         //表单校验
         ValidatorUtils.validateEntity(form);
 
-        UserEntity user = new UserEntity();
+        UserDomain user = new UserDomain();
         user.setMobile(form.getMobile());
         user.setUsername(form.getMobile());
         user.setPassword(DigestUtils.sha256Hex(form.getPassword()));

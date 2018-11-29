@@ -3,8 +3,8 @@ package io.fast.common.interceptor;
 
 import io.fast.common.annotation.Login;
 import io.fast.common.exception.RRException;
-import io.fast.modules.sys.domain.TokenEntity;
-import io.fast.modules.sys.service.TokenService;
+import io.fast.modules.user.domain.TokenDomain;
+import io.fast.modules.user.service.TokenService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -53,13 +53,13 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
 
         //查询token信息
-        TokenEntity tokenEntity = tokenService.queryByToken(token);
-        if(tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()){
+        TokenDomain tokenDomain = tokenService.queryByToken(token);
+        if(tokenDomain == null || tokenDomain.getExpireTime().getTime() < System.currentTimeMillis()){
             throw new RRException("token失效，请重新登录");
         }
 
         //设置userId到request里，后续根据userId，获取用户信息
-        request.setAttribute(USER_KEY, tokenEntity.getUserId());
+        request.setAttribute(USER_KEY, tokenDomain.getUserId());
 
         return true;
     }

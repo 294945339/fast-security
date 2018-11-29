@@ -14,13 +14,13 @@
  * the License.
  */
 
-package io.fast.modules.sys.service.impl;
+package io.fast.modules.user.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import io.fast.modules.sys.dao.TokenDao;
-import io.fast.modules.sys.domain.TokenEntity;
-import io.fast.modules.sys.service.TokenService;
+import io.fast.modules.user.dao.TokenDao;
+import io.fast.modules.user.domain.TokenDomain;
+import io.fast.modules.user.service.TokenService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -28,19 +28,19 @@ import java.util.UUID;
 
 
 @Service("tokenService")
-public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> implements TokenService {
+public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenDomain> implements TokenService {
 	/**
 	 * 12小时后过期
 	 */
 	private final static int EXPIRE = 3600 * 12;
 
 	@Override
-	public TokenEntity queryByToken(String token) {
-		return this.selectOne(new EntityWrapper<TokenEntity>().eq("token", token));
+	public TokenDomain queryByToken(String token) {
+		return this.selectOne(new EntityWrapper<TokenDomain>().eq("token", token));
 	}
 
 	@Override
-	public TokenEntity createToken(long userId) {
+	public TokenDomain createToken(long userId) {
 		//当前时间
 		Date now = new Date();
 		//过期时间
@@ -50,25 +50,25 @@ public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> impleme
 		String token = generateToken();
 
 		//保存或更新用户token
-		TokenEntity tokenEntity = new TokenEntity();
-		tokenEntity.setUserId(userId);
-		tokenEntity.setToken(token);
-		tokenEntity.setUpdateTime(now);
-		tokenEntity.setExpireTime(expireTime);
-		this.insertOrUpdate(tokenEntity);
+		TokenDomain tokenDomain = new TokenDomain();
+		tokenDomain.setUserId(userId);
+		tokenDomain.setToken(token);
+		tokenDomain.setUpdateTime(now);
+		tokenDomain.setExpireTime(expireTime);
+		this.insertOrUpdate(tokenDomain);
 
-		return tokenEntity;
+		return tokenDomain;
 	}
 
 	@Override
 	public void expireToken(long userId){
 		Date now = new Date();
 
-		TokenEntity tokenEntity = new TokenEntity();
-		tokenEntity.setUserId(userId);
-		tokenEntity.setUpdateTime(now);
-		tokenEntity.setExpireTime(now);
-		this.insertOrUpdate(tokenEntity);
+		TokenDomain tokenDomain = new TokenDomain();
+		tokenDomain.setUserId(userId);
+		tokenDomain.setUpdateTime(now);
+		tokenDomain.setExpireTime(now);
+		this.insertOrUpdate(tokenDomain);
 	}
 
 	private String generateToken(){

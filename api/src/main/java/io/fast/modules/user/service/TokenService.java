@@ -14,10 +14,10 @@
  * the License.
  */
 
-package io.fast.modules.sys.service;
+package io.fast.modules.user.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import io.fast.modules.sys.domain.TokenEntity;
+import io.fast.modules.user.domain.TokenDomain;
 
 /**
  * 用户Token
@@ -26,16 +26,16 @@ import io.fast.modules.sys.domain.TokenEntity;
  * @email sunlightcs@gmail.com
  * @date 2017-03-23 15:22:07
  */
-public interface TokenService extends IService<TokenEntity> {
+public interface TokenService extends IService<TokenDomain> {
 
-	TokenEntity queryByToken(String token);
+	TokenDomain queryByToken(String token);
 
 	/**
 	 * 生成token
 	 * @param userId  用户ID
 	 * @return        返回token信息
 	 */
-	TokenEntity createToken(long userId);
+	TokenDomain createToken(long userId);
 
 	/**
 	 * 设置token过期

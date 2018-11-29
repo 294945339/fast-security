@@ -14,7 +14,7 @@
  * the License.
  */
 
-package io.fast.modules.sys.form;
+package io.fast.modules.user.form;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
