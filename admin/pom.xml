@@ -7,9 +7,9 @@
         <version>3.2.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>fast-admin</artifactId>
+    <artifactId>admin</artifactId>
     <packaging>jar</packaging>
-    <description>fast-admin</description>
+    <description>admin</description>
 
     <properties>
         <quartz.version>2.3.0</quartz.version>
