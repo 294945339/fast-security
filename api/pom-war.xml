@@ -1,38 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>io.renren</groupId>
-		<artifactId>renren-security</artifactId>
+		<groupId>io.fast</groupId>
+		<artifactId>fast-security</artifactId>
 		<version>3.2.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>renren-api</artifactId>
+	<artifactId>api</artifactId>
 	<packaging>war</packaging>
 	<description>war包对应的pom，打war包，执行【mvn clean package -f pom-war.xml】</description>
 
-	<properties>
-		<swagger.version>2.7.0</swagger.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
-			<groupId>io.renren</groupId>
-			<artifactId>renren-common</artifactId>
+			<groupId>io.fast</groupId>
+			<artifactId>common</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+
+		<!--cache 缓存-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
 		</dependency>
 	</dependencies>
 
