@@ -112,7 +112,6 @@ public class RabbitConfig {
 //            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
 //        });
 //        return container;
-//
 //    }
 
     /**
