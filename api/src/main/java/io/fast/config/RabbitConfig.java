@@ -134,6 +134,5 @@ public class RabbitConfig {
 //    @Bean
 //    public Binding bindingB() {
 //        return BindingBuilder.bind(queueB()).to(MsgReceiver()).with(RabbitConfig.ROUTINGKEY_B);
-//
 //    }
 }
