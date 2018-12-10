@@ -3,6 +3,7 @@ package io.fast.modules.user.controller;
 
 import io.fast.common.annotation.Login;
 import io.fast.common.annotation.LoginUser;
+import io.fast.common.rabbltMq.MsgProducer;
 import io.fast.common.utils.R;
 import io.fast.modules.user.domain.UserDomain;
 import io.swagger.annotations.Api;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.annotation.Resource;
+
 /**
  * 测试接口
  *
@@ -22,26 +25,30 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @RestController
 @RequestMapping("/api")
-@Api(tags="测试接口")
+@Api(tags = "测试接口")
 public class ApiTestController {
+
+    @Resource
+    private MsgProducer msgProducer;
 
     @Login
     @GetMapping("userInfo")
-    @ApiOperation(value="获取用户信息", response= UserDomain.class)
-    public R userInfo(@ApiIgnore @LoginUser UserDomain user){
+    @ApiOperation(value = "获取用户信息", response = UserDomain.class)
+    public R userInfo(@ApiIgnore @LoginUser UserDomain user) {
         return R.ok().put("user", user);
     }
 
     @Login
     @GetMapping("userId")
     @ApiOperation("获取用户ID")
-    public R userInfo(@ApiIgnore @RequestAttribute("userId") Integer userId){
+    public R userInfo(@ApiIgnore @RequestAttribute("userId") Integer userId) {
         return R.ok().put("userId", userId);
     }
 
     @GetMapping("notToken")
     @ApiOperation("忽略Token验证测试")
-    public R notToken(){
+    public R notToken() {
+        msgProducer.sendMsg("hello");
         return R.ok().put("msg", "无需token也能访问。。。");
     }
 
