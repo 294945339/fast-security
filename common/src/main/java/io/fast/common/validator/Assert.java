@@ -22,4 +22,5 @@ public abstract class Assert {
             throw new RRException(message);
         }
     }
+
 }
